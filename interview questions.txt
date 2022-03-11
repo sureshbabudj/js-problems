@@ -1,0 +1,148 @@
+OOJS
+-----------------------------------------------
+inheritance
+    - single
+    - multiple
+    - multi-level
+method overriding 
+    - possible in JS
+method overloading
+    - not possible in JS
+polymorphism
+    - inheritance vs polymorphism
+data abstraction or encapsution
+    - implementation in JS
+class accessibility specifiers
+    - public  - exposed to outside world
+    - protected  - only child can access
+    - private  - only within the class
+
+Basic JS
+----------------------------------------------------------------------------------------------
+scope
+-----------------------------------------------
+scope - visibility of variables
+    - Global - visible by everything
+    - Function - visible within a function (and its sub-functions and blocks)
+    - Block - visible within a block (and its sub-blocks)
+    - Module - visible within a module
+
+
+if (true) {
+    let i = 0;
+}
+console.log(i);
+
+function some() { print: console.log(this) }
+some() // window
+
+var a = { print: function() { console.log(this) }}
+a.print() // a 
+
+var a = { print:() => { console.log(this) }}
+a.print() // window
+
+var a = {b: 1, print:() => { console.log(this.b) }}
+a.print() // undefined
+a.print.call(a) // 1
+
+
+
+context  : call apply bind
+-----------------------------------------------
+var a = 1, b = 2;
+function math (a, b) { 
+    this.a = a;
+    this.b = b; 
+    this.add = () => { 
+        return this.a + this.b;
+    } 
+}
+var d = new math(a, b)
+function dummy () {
+
+}
+var dummy1 = new dummy();
+d.add();
+d.add.call(dummy1, a, b);
+
+
+Arrow function 
+-----------------------------------------------
+    With an arrow function this represents the owner of the function
+
+
+
+Angular
+----------------------------------------------------------------------------------------------
+
+ViewEncapsulation
+    - none
+    - shadowDOM
+    - emulated
+
+<parent><child></child></parent>
+parent css 
+.error {color: red}. Or /deep/ .error {color: red}
+child html
+<span class="error">some err</span>
+
+
+
+Life cycle method
+----------------------------------------------------------------------------------------------
+
+ngOnChanges vs ngDoCheck
+
+ngOnDestroy
+
+<compA *ngIf="showCompA"></compA>
+<button (click)="showCompA = !showCompA">show/hide</button>
+
+Will the compA ngOnDestroy event called?
+
+
+RXJS
+----------------------------------------------------------------------------------------------
+
+Behaviour Subject
+    It needs an initial value as it must always return a value on subscription even if it hasn't received a next()
+    Upon subscription, it returns the last value of the subject. A regular observable only triggers when it receives an onnext
+    at any point, you can retrieve the last value of the subject in a non-observable code using the getValue() method.
+
+Subject
+
+Observer
+
+forkJoin
+
+API Polling
+
+
+CSS
+----------------------------------------------------------------------------------------------
+
+specificity
+-----------------------------------------------
+<html><body><div id="myId" class="myClass">hello</div></body></html>
+
+.myId {color: red}
+.myClass {color: green}
+body div {color: yellow}
+
+
+position
+-----------------------------------------------
+
+values
+    fixed,
+    absolute
+    relative
+    inherit
+    initial
+
+fixed vs absolute
+
+
+
+
